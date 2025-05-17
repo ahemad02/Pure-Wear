@@ -5,10 +5,14 @@ import { CartContext } from "./context/Cart";
 import { useForm } from "react-hook-form";
 import { apiUrl, userToken } from "./common/http";
 import { toast } from "react-toastify";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState("cod");
   const { cartData, subTotal, grandTotal, shipping } = useContext(CartContext);
+
+  const stripe = useStripe();
+  const elements = useElements();
 
   const handlePaymentMethod = (e) => {
     setPaymentMethod(e.target.value);
@@ -48,9 +52,52 @@ const Checkout = () => {
 
   const navigate = useNavigate();
 
-  const processOrder = (data) => {
-    if (paymentMethod == "cod") {
+  const processOrder = async (data) => {
+    if (paymentMethod === "cod") {
       saveOrder(data, "unpaid");
+    } else if (paymentMethod === "stripe") {
+      if (!stripe || !elements) return;
+
+      const cardElement = elements.getElement(CardElement);
+
+      // Call your backend to create a PaymentIntent
+      const response = await fetch(`${apiUrl}/create-payment-intent`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${userToken()}`,
+        },
+        body: JSON.stringify({ amount: grandTotal() * 100 }), // amount in cents
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Server error response:", errorText);
+        toast.error("Server error. Check backend logs.");
+        return;
+      }
+
+      const { clientSecret } = await response.json();
+
+      if (!clientSecret) {
+        toast.error("Stripe client secret not received.");
+        return;
+      }
+
+      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: cardElement,
+        },
+      });
+
+      if (paymentResult.error) {
+        toast.error(paymentResult.error.message);
+      } else {
+        if (paymentResult.paymentIntent.status === "succeeded") {
+          saveOrder(data, "paid");
+        }
+      }
     }
   };
 
@@ -289,6 +336,7 @@ const Checkout = () => {
               </h3>
               <div className="pt-2">
                 <input
+                  name="payment_method"
                   type="radio"
                   onClick={handlePaymentMethod}
                   defaultChecked={paymentMethod == "stripe"}
@@ -298,6 +346,7 @@ const Checkout = () => {
                   Stripe
                 </label>
                 <input
+                  name="payment_method"
                   type="radio"
                   onClick={handlePaymentMethod}
                   defaultChecked={paymentMethod == "cod"}
@@ -311,6 +360,15 @@ const Checkout = () => {
               <div className="d-flex py-3">
                 <button className="btn btn-primary">Pay Now</button>
               </div>
+
+              {paymentMethod === "stripe" && (
+                <div className="pt-3">
+                  <label>Card Info</label>
+                  <div className="form-control">
+                    <CardElement />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </form>

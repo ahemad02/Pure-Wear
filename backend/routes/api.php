@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\OrderController as AdminOrderController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\admin\SizeController;
+use App\Http\Controllers\admin\StripePaymentController;
 use App\Http\Controllers\admin\TempImageController;
 use App\Http\Controllers\front\AccountController;
 use App\Http\Controllers\front\OrderController;
@@ -35,6 +36,7 @@ Route::group(['middleware' => ['auth:sanctum', 'checkUserRole']], function () {
     Route::get('get-orders', [AccountController::class, 'getOrders']);
     Route::post('update-profile', [AccountController::class, 'updateProfile']);
     Route::get('get-account-details', [AccountController::class, 'getAccountDetails']);
+    Route::post('create-payment-intent', [StripePaymentController::class, 'createPaymentIntent']);
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'checkAdminRole']], function () {

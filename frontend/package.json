@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^3.7.0",
+    "@stripe/stripe-js": "^7.3.0",
     "bootstrap": "^5.3.6",
     "jodit-react": "^5.2.19",
     "react": "^19.1.0",

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { apiUrl } from "../common/http";
 import { CartContext } from "../context/Cart";
 import { AdminAuthContext } from "../context/AdminAuth";
-import logoImg from "../assets/images/logo.png";
+import logoImg from "../../assets/images/logo.png";
 
 const Header = ({ img = logoImg }) => {
   const [categories, setCategories] = useState([]);

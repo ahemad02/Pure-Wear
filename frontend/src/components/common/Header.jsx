@@ -9,7 +9,7 @@ import { CartContext } from "../context/Cart";
 import { AdminAuthContext } from "../context/AdminAuth";
 import logoImg from "../../assets/images/logo.png";
 
-const Header = ({ img = logoImg }) => {
+const Header = () => {
   const [categories, setCategories] = useState([]);
   const { getQty } = useContext(CartContext);
   const { user } = useContext(AdminAuthContext);
@@ -49,7 +49,7 @@ const Header = ({ img = logoImg }) => {
         <Navbar expand="lg" className="py-0">
           <Navbar.Brand href="/" className="me-4">
             <img
-              src={img}
+              src={logoImg}
               alt="Logo"
               width="160"
               style={{ maxHeight: 48, objectFit: "contain" }}

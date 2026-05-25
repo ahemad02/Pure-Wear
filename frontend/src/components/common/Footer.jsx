@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logoImg from "../assets/images/logo.png";
 
 const Footer = () => {
   return (
@@ -77,12 +78,7 @@ const Footer = () => {
           <div className="footer-grid">
             {/* Brand */}
             <div className="footer-brand-col">
-              <img
-                src="../src/assets/images/logo.png"
-                alt="Logo"
-                width={140}
-                className="mb-3"
-              />
+              <img src={logoImg} alt="Logo" width={140} className="mb-3" />
               <p className="footer-tagline">
                 Your fashion partner for every season and story. Curated with
                 care, delivered with love.

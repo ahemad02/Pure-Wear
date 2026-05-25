@@ -20,7 +20,7 @@ return [
     'allowed_methods'          => ['*'],
 
     // Frontend origin you want to allow:
-    'allowed_origins'          => ['http://localhost:5173', 'http://localhost:5174', 'https://pure-wear.vercel.app/'],
+    'allowed_origins'          => ['http://localhost:5173', 'http://localhost:5174', 'https://pure-wear.vercel.app'],
 
     // (leave empty unless you need regex origins)
     'allowed_origins_patterns' => [],

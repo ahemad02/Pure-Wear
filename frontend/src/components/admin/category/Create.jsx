@@ -40,7 +40,7 @@ const Create = () => {
   };
 
   return (
-    <Layout img={"../../src/assets/images/logo.png"}>
+    <Layout>
       <div className="container">
         <div className="row">
           <div className="d-flex justify-content-between mt-5 pb-3">

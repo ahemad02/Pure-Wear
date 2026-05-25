@@ -38,7 +38,7 @@ const Confirmation = () => {
   }, []);
 
   return (
-    <Layout img="../../../src/assets/images/logo.png">
+    <Layout>
       <div className="container py-5">
         {loading == true && (
           <div className="text-center py-5">

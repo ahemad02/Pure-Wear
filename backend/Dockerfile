@@ -6,6 +6,7 @@ FROM php:8.4-fpm
 # Install nginx + system deps + PHP extensions
 RUN apt-get update && apt-get install -y --no-install-recommends \
     nginx git curl unzip \
+    nginx git curl unzip ca-certificates \ 
     libpq-dev libonig-dev libzip-dev zip \
     libpng-dev libjpeg-dev libfreetype6-dev libwebp-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \

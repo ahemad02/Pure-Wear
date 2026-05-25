@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap");
 
 $primary-font: "DM Sans", sans-serif;
 $primary-white: #fff;
@@ -241,5 +242,994 @@ footer {
     right: -13px;
     font-size: 12px;
     text-align: center;
+  }
+}
+
+// ============================================================
+//  VÊTU — Homepage Upgrade Additions
+//  Paste this at the END of your existing main.scss / App.scss
+//  Your existing variables ($primary-color etc.) stay the same
+// ============================================================
+
+// ── TOPBAR ─────────────────────────────────────────────────
+.header-topbar {
+  background-color: $primary-black;
+  color: $primary-white;
+  text-align: center;
+  padding: 9px 1rem;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+
+  strong {
+    color: $primary-color;
+  }
+}
+
+// ── HEADER / NAV ───────────────────────────────────────────
+.site-header {
+  background: $primary-white;
+  border-bottom: 1px solid rgba($primary-black, 0.07);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 0 rgba($primary-black, 0.05);
+
+  .navbar {
+    min-height: 68px;
+  }
+}
+
+.logo-mark {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $primary-color;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.nav-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary-black;
+  transition: background 0.18s ease;
+
+  &:hover {
+    background: rgba($primary-color, 0.12);
+    color: $primary-color;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+  }
+}
+
+// Override cart-bucket for new icon style
+.cart-bucket {
+  position: relative;
+
+  span {
+    background-color: #f97316;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+  }
+}
+
+// ── HERO ───────────────────────────────────────────────────
+.hero-section {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 82vh;
+    background: $primary-white;
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero-editorial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 1px;
+      background: rgba($primary-black, 0.08);
+
+      @media (max-width: 991px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      padding: 3rem 1.5rem;
+    }
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $primary-color;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+
+    &::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: $primary-color;
+    }
+  }
+
+  .hero-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(42px, 5vw, 66px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: $primary-black;
+    margin-bottom: 1.2rem;
+
+    em {
+      color: $primary-color;
+      font-style: italic;
+    }
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: rgba($primary-black, 0.55);
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 2.2rem;
+    font-weight: 400;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.8rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.2rem;
+
+    .h-stat {
+      .num {
+        font-family: "Playfair Display", serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: $primary-black;
+      }
+
+      .lbl {
+        font-size: 12px;
+        color: rgba($primary-black, 0.5);
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  // Right panel
+  .hero-visual {
+    position: relative;
+    overflow: hidden;
+    background: rgba($primary-color, 0.08);
+
+    .hero-swiper,
+    .swiper {
+      height: 100%;
+
+      .swiper-slide {
+        height: 82vh;
+
+        @media (max-width: 767px) {
+          height: 45vh;
+        }
+      }
+    }
+  }
+
+  .slide-tag {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: $primary-white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba($primary-black, 0.08);
+    z-index: 10;
+
+    .slide-tag-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba($primary-black, 0.5);
+    }
+
+    .slide-tag-price {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      color: $primary-black;
+      margin-top: 3px;
+    }
+  }
+}
+
+// ── TRUST STRIP ────────────────────────────────────────────
+.trust-strip {
+  border-top: 1px solid rgba($primary-black, 0.07);
+  border-bottom: 1px solid rgba($primary-black, 0.07);
+  background: $primary-white;
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 2rem;
+    border-right: 1px solid rgba($primary-black, 0.07);
+
+    &:last-child {
+      border-right: none;
+    }
+
+    @media (max-width: 767px) {
+      border-right: none;
+      border-bottom: 1px solid rgba($primary-black, 0.07);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .trust-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba($primary-color, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      stroke: $primary-color;
+      fill: none;
+      stroke-width: 1.6;
+    }
+  }
+
+  h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: $primary-black;
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: 13px;
+    color: rgba($primary-black, 0.5);
+    margin: 0;
+  }
+}
+
+// ── SHARED SECTION HEADER ──────────────────────────────────
+.section-hdr {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: $primary-color;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.section-heading {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  color: $primary-black;
+  margin: 0;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 32px;
+    height: 2px;
+    background: $primary-color;
+  }
+}
+
+.section-see-all {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: $primary-color;
+  text-decoration: none;
+  border-bottom: 1px solid $primary-color;
+  padding-bottom: 2px;
+  white-space: nowrap;
+  transition: opacity 0.18s;
+
+  &:hover {
+    opacity: 0.7;
+    color: $primary-color;
+  }
+}
+
+// ── PRODUCT CARDS (New Arrivals & any grid) ────────────────
+.prod-card {
+  background: $primary-white;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba($primary-black, 0.07);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: $primary-black;
+
+  &:hover {
+    box-shadow: 0 12px 40px rgba($primary-black, 0.1);
+    transform: translateY(-4px);
+    color: $primary-black;
+    text-decoration: none;
+  }
+
+  .prod-img-wrap {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: rgba($primary-color, 0.08);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+  }
+
+  &:hover .prod-img-wrap img {
+    transform: scale(1.07);
+  }
+
+  .prod-hover-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $primary-color;
+    color: $primary-white;
+    text-align: center;
+    padding: 11px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(100%);
+    transition:
+      opacity 0.25s,
+      transform 0.25s;
+  }
+
+  &:hover .prod-hover-bar {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .prod-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    z-index: 1;
+
+    &.badge-new {
+      background: $primary-black;
+      color: $primary-white;
+    }
+
+    &.badge-sale {
+      background: $primary-color;
+      color: $primary-white;
+    }
+  }
+
+  .prod-info {
+    padding: 1rem 1.1rem 1.2rem;
+  }
+
+  .prod-cat {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba($primary-black, 0.5);
+    margin-bottom: 0.3rem;
+  }
+
+  .prod-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: $primary-black;
+    margin-bottom: 0.5rem;
+    transition: color 0.18s;
+  }
+
+  &:hover .prod-name {
+    color: $primary-color;
+  }
+
+  .prod-price {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+
+    .p-cur {
+      font-size: 16px;
+      font-weight: 700;
+      color: $primary-black;
+    }
+
+    .p-old {
+      font-size: 13px;
+      color: rgba($primary-black, 0.45);
+      text-decoration: line-through;
+    }
+
+    .p-pct {
+      font-size: 11px;
+      color: #e55;
+      font-weight: 700;
+    }
+  }
+}
+
+// Products grid
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 991px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+}
+
+// ── FEATURED PRODUCTS ──────────────────────────────────────
+.section-featured {
+  background: $primary-white;
+  padding: 5rem 0;
+}
+
+.featured-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feat-card {
+  display: block;
+  text-decoration: none;
+  color: $primary-black;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba($primary-black, 0.07);
+  transition:
+    box-shadow 0.25s,
+    transform 0.25s;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 12px 40px rgba($primary-black, 0.12);
+    transform: translateY(-4px);
+    text-decoration: none;
+    color: $primary-black;
+  }
+
+  &__img {
+    overflow: hidden;
+    background: rgba($primary-color, 0.08);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+  }
+
+  &:hover &__img img {
+    transform: scale(1.05);
+  }
+
+  &__body {
+    padding: 1.2rem 1.3rem 1.4rem;
+  }
+
+  &__cat {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba($primary-black, 0.45);
+    margin-bottom: 0.3rem;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: $primary-black;
+    margin-bottom: 0.5rem;
+    transition: color 0.18s;
+  }
+
+  &:hover &__name {
+    color: $primary-color;
+  }
+
+  &__price {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+
+    .price-cur {
+      font-size: 16px;
+      font-weight: 700;
+      color: $primary-black;
+    }
+
+    .price-old {
+      font-size: 13px;
+      color: rgba($primary-black, 0.4);
+      text-decoration: line-through;
+    }
+  }
+
+  // Big card variant
+  &--big {
+    .feat-card__img {
+      height: 480px;
+
+      @media (max-width: 767px) {
+        height: 320px;
+      }
+    }
+
+    .feat-card__name {
+      font-size: 1.3em;
+    }
+  }
+
+  // Small card variant (2x2 grid)
+  &--sm {
+    .feat-card__img {
+      height: 220px;
+
+      @media (max-width: 767px) {
+        height: 180px;
+      }
+    }
+  }
+}
+
+// 2x2 right grid
+.feat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── LOADING SKELETONS ──────────────────────────────────────
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+%skeleton-base {
+  background: linear-gradient(90deg, #eee 25%, #f7f7f7 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+.skeleton-img {
+  @extend %skeleton-base;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+}
+
+.skeleton-line {
+  @extend %skeleton-base;
+  height: 14px;
+
+  &.short {
+    width: 60%;
+  }
+}
+
+// ── FOOTER ADDITIONS ───────────────────────────────────────
+footer {
+  // Social icons
+  .social-links {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+  }
+
+  .soc-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba($primary-white, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba($primary-white, 0.45);
+    transition:
+      border-color 0.18s,
+      color 0.18s;
+    background: transparent;
+
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+  }
+
+  // Quick links col heading override
+  .footer-col-heading {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: $primary-color;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba($primary-white, 0.1);
+    padding: 1.8rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      color: rgba($primary-white, 0.3);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+
+      a {
+        color: rgba($primary-white, 0.3);
+        font-size: 13px;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+// ── BUTTON VARIANTS (supplement existing .btn styles) ──────
+.btn {
+  border-radius: 6px; // Add rounding to your existing btns
+
+  &.btn-primary {
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  &.btn-secondary {
+    border-radius: 6px;
+    font-weight: 600;
+  }
+}
+
+// ── FOOTER FULL STYLES ─────────────────────────────────────
+// Paste these at the END of your style.scss
+
+.site-footer {
+  background-color: $tertiary-color;
+}
+
+// ── TRUST STRIP (inside footer) ────────────────────────────
+.footer-trust {
+  background: rgba($primary-white, 0.05);
+  border-bottom: 1px solid rgba($primary-white, 0.1);
+  padding: 2rem 0;
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-right: 1px solid rgba($primary-white, 0.1);
+
+    &:last-child {
+      border-right: none;
+    }
+
+    @media (max-width: 767px) {
+      border-right: none;
+      border-bottom: 1px solid rgba($primary-white, 0.1);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: $primary-white;
+      margin-bottom: 2px;
+    }
+
+    p {
+      font-size: 13px;
+      color: rgba($primary-white, 0.5);
+      margin: 0;
+    }
+  }
+
+  .trust-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba($primary-color, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      stroke: $primary-color;
+    }
+  }
+}
+
+// ── FOOTER MAIN ────────────────────────────────────────────
+.footer-main {
+  padding: 4rem 0 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 575px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+// Brand column
+.footer-brand-col {
+  .footer-tagline {
+    font-size: 14px;
+    color: rgba($primary-white, 0.5);
+    line-height: 1.7;
+    margin: 0;
+  }
+}
+
+// Nav columns (Categories, Quick Links, Get In Touch)
+.footer-nav-col {
+  h5 {
+    // Same as .footer-col-heading already in SCSS
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: $primary-color;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+
+  ul {
+    li {
+      margin-bottom: 10px;
+
+      a {
+        font-size: 14px;
+        color: rgba($primary-white, 0.6);
+        text-decoration: none;
+        transition: color 0.18s;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+// Social links — override .social-link to match .soc-btn style
+.social-links {
+  display: flex;
+  gap: 0.6rem;
+
+  .social-link {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba($primary-white, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba($primary-white, 0.45);
+    transition:
+      border-color 0.18s,
+      color 0.18s;
+    text-decoration: none;
+
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+      stroke: none;
+    }
+  }
+}
+
+// Footer bottom bar
+.footer-bottom {
+  border-top: 1px solid rgba($primary-white, 0.1);
+  padding: 1.8rem 0;
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 575px) {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  p {
+    color: rgba($primary-white, 0.3);
+    font-size: 13px;
+    margin: 0;
+  }
+
+  // Handles both .footer-links and .footer-legal
+  .footer-links,
+  .footer-legal {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      color: rgba($primary-white, 0.3);
+      font-size: 13px;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
   }
 }

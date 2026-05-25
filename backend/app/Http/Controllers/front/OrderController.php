@@ -37,7 +37,7 @@ class OrderController extends Controller
                 $orderItem->unit_price = $item['price'];
                 $orderItem->qty        = $item['qty'];
                 $orderItem->product_id = $item['product_id'];
-                $orderItem->size       = $item['size'];
+                $orderItem->size       = $item['size'] ?? null;
                 $orderItem->name       = $item['title'];
                 $orderItem->save();
             }

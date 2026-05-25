@@ -32,7 +32,7 @@ const Register = () => {
         console.log(result);
         if (result.status == 200) {
           toast.success(result.message);
-          navigate("/admin/login");
+          navigate("/");
         } else {
           //   toast.error(result.message);
           const formErrors = result.errors;

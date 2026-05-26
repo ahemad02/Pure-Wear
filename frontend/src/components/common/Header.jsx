@@ -47,7 +47,7 @@ const Header = () => {
 
       <div className="container">
         <Navbar expand="lg" className="py-0">
-          <Navbar.Brand href="/" className="me-4">
+          <Navbar.Brand as={Link} to="/" className="me-4">
             <img
               src={logoImg}
               alt="Logo"
@@ -63,7 +63,8 @@ const Header = () => {
               {categories &&
                 categories.map((category) => (
                   <Nav.Link
-                    href={`/shop?category=${category.id}`}
+                    as={Link}
+                    to={`/shop?category=${category.id}`}
                     key={category.id}
                     className="nav-cat-link"
                   >
